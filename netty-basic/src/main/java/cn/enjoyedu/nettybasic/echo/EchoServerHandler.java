@@ -15,28 +15,20 @@ import io.netty.util.CharsetUtil;
 /*不加这个注解那么在增加到childHandler时就必须new出来*/
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
-//    无状态的类， 当然是线程安全的。
-
     /*客户端读到数据以后，就会执行*/
-//  1000 数据： 500-buffer: 执行1次；
-//   从字节流可以正常转为字符串时才 会被调用一次。
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf in = (ByteBuf)msg;
         System.out.println("Server accept"+in.toString(CharsetUtil.UTF_8));
         ctx.write(in);
 
-        // 手动向下传递， 责任链模式！！
-//        ctx.fireChannelRead();
     }
 
     /*** 服务端读取完成网络数据后的处理*/
     @Override
-//  1000 数据： 500-buffer: 执行2次 !!!!
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush(Unpooled.EMPTY_BUFFER)
                 .addListener(ChannelFutureListener.CLOSE);
-//        ctx.fireChannelReadComplete();
     }
 
     /*** 发生异常后的处理*/
@@ -46,5 +38,4 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         ctx.close();
     }
-
 }
