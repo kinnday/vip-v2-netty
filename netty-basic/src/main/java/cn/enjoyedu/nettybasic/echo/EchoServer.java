@@ -46,6 +46,7 @@ public class EchoServer  {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             /*添加到该子channel的pipeline的尾部*/
+//                          netty为多反应堆模式！
                             ch.pipeline().addLast(serverHandler);
                         }
                     });
