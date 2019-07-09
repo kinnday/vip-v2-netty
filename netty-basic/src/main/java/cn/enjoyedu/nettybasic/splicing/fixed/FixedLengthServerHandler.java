@@ -1,9 +1,11 @@
 package cn.enjoyedu.nettybasic.splicing.fixed;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.handler.codec.FixedLengthFrameDecoder;
 import io.netty.util.CharsetUtil;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,6 +27,7 @@ public class FixedLengthServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("Server Accept["+request
                 +"] and the counter is:"+counter.incrementAndGet());
         //TODO
+        ctx.writeAndFlush(Unpooled.copiedBuffer(FixedLengthEchoServer.RESPONSE.getBytes()));
     }
 
     /*** 发生异常后的处理*/
