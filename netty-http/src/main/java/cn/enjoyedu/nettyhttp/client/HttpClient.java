@@ -9,6 +9,10 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.http.HttpClientCodec;
+import io.netty.handler.codec.http.HttpContentCompressor;
+import io.netty.handler.codec.http.HttpContentDecompressor;
+import io.netty.handler.codec.http.HttpObjectAggregator;
 
 import java.net.URI;
 
@@ -31,6 +35,11 @@ public class HttpClient {
                 public void initChannel(SocketChannel ch) throws Exception {
                     // 客户端接收到的是httpResponse响应，所以要使用HttpResponseDecoder进行解码
                     //TODO
+//                  同时包含了-http的编码和解码
+                    ch.pipeline().addLast(new HttpClientCodec());
+                    ch.pipeline().addLast(new HttpObjectAggregator(512*1024));
+//                  内容解压缩
+                    ch.pipeline().addLast("decompressor",new HttpContentDecompressor());
                     ch.pipeline().addLast(new HttpClientInboundHandler());
                 }
             });

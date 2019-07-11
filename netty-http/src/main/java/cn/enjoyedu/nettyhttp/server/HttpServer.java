@@ -25,6 +25,9 @@ public class HttpServer {
     public static void main(String[] args) throws Exception {
         final SslContext sslCtx = null;
         //TODO SSL
+        if(SSL){
+//            sslCtx = ***
+        }
         try {
             b.group(group);
             b.channel(NioServerSocketChannel.class);
