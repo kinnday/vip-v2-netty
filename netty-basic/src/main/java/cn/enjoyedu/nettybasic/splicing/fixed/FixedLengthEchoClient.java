@@ -8,7 +8,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.FixedLengthFrameDecoder;
-import io.netty.handler.codec.LineBasedFrameDecoder;
 
 import java.net.InetSocketAddress;
 
@@ -46,10 +45,9 @@ public class FixedLengthEchoClient {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
-            //接收服务端应答报文的长度
-            ch.pipeline().addLast(new FixedLengthFrameDecoder(
-                    FixedLengthEchoServer.RESPONSE.length()));
-
+            ch.pipeline().addLast(
+                    new FixedLengthFrameDecoder(
+                            FixedLengthEchoServer.RESPONSE.length()));
             ch.pipeline().addLast(new FixedLengthClientHandler());
         }
     }

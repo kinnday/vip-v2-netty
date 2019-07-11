@@ -27,11 +27,12 @@ public class LineBaseClientHandler extends SimpleChannelInboundHandler<ByteBuf> 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ByteBuf msg = null;
-        String request = "Mark,Lison,Peter,James,Deer" + System.getProperty("line.separator");
-                //TODO
+        String request = "Mark,Lison,Peter,James,Deer"
+            + System.getProperty("line.separator");
         for(int i=0;i<10;i++){
             Thread.sleep(500);
-            System.out.println(System.currentTimeMillis()+":即将发送数据："+request);
+            System.out.println(System.currentTimeMillis()+":即将发送数据："
+                    +request);
             msg = Unpooled.buffer(request.length());
             msg.writeBytes(request.getBytes());
             ctx.writeAndFlush(msg);

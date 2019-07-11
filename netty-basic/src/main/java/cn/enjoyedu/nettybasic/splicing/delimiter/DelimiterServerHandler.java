@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class DelimiterServerHandler extends ChannelInboundHandlerAdapter {
 
     private AtomicInteger counter = new AtomicInteger(0);
+    private AtomicInteger completeCounter = new AtomicInteger(0);
 
     /*** 服务端读取到网络数据后的处理*/
     @Override
@@ -31,10 +32,13 @@ public class DelimiterServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     /*** 服务端读取完成网络数据后的处理*/
-//    @Override
-//    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-//        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
-//    }
+    @Override
+    public void channelReadComplete(ChannelHandlerContext ctx)
+            throws Exception {
+        ctx.fireChannelReadComplete();
+        System.out.println("the ReadComplete count is "
+                +completeCounter.incrementAndGet());
+    }
 
     /*** 发生异常后的处理*/
     @Override

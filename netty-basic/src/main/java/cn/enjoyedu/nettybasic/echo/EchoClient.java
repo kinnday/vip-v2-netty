@@ -27,7 +27,7 @@ public class EchoClient {
         /*线程组*/
         EventLoopGroup group = new NioEventLoopGroup();
         try{
-            /*客户端启动必备-引导程序，引入线程组*/
+            /*客户端启动必备*/
             Bootstrap b = new Bootstrap();
             b.group(group)/*把线程组传入*/
                     /*指定使用NIO进行网络传输*/

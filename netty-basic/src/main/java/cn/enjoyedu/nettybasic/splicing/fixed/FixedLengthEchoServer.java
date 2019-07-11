@@ -49,9 +49,9 @@ public class FixedLengthEchoServer {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
-            //接收客户端报文的长度
-            ch.pipeline().addLast(new FixedLengthFrameDecoder(
-                    FixedLengthEchoClient.REQUEST.length()));
+            ch.pipeline().addLast(
+                    new FixedLengthFrameDecoder(
+                            FixedLengthEchoClient.REQUEST.length()));
             ch.pipeline().addLast(new FixedLengthServerHandler());
         }
     }

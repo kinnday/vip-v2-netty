@@ -20,8 +20,6 @@ public class FixedLengthClientHandler extends SimpleChannelInboundHandler<ByteBu
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
         System.out.println("client Accept["+msg.toString(CharsetUtil.UTF_8)
                 +"] and the counter is:"+counter.incrementAndGet());
-//      收到的信息不完整...
-        ctx.close();
     }
 
     /*** 客户端被通知channel活跃后，做事*/

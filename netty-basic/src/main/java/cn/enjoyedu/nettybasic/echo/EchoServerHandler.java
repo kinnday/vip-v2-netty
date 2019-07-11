@@ -10,10 +10,7 @@ import io.netty.util.CharsetUtil;
 
 /**
  * 类说明：自己的业务处理
- * netty的开发主要就是编写各种 channelHandler; 责任链模式；
- *
  */
-
 @ChannelHandler.Sharable
 /*不加这个注解那么在增加到childHandler时就必须new出来*/
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {

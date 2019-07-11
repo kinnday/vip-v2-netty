@@ -18,9 +18,7 @@ import java.net.InetSocketAddress;
  * 类说明：
  */
 public class DelimiterEchoServer {
-    //            解决 黏包/半包问题：
-//            在应用层实现
-//            1. 分隔符： 100+“@@@” +100
+
     public static final String DELIMITER_SYMBOL = "@~";
     public static final int PORT = 9997;
 
@@ -55,7 +53,6 @@ public class DelimiterEchoServer {
         protected void initChannel(Channel ch) throws Exception {
             ByteBuf delimiter = Unpooled.copiedBuffer(DELIMITER_SYMBOL
                     .getBytes());
-//            1. 分隔符： 100+“@@@” +100
             ch.pipeline().addLast( new DelimiterBasedFrameDecoder(1024,
                     delimiter));
             ch.pipeline().addLast(new DelimiterServerHandler());

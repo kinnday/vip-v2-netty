@@ -43,15 +43,8 @@ public class LineBaseEchoClient {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
-            //TODO
-//            解决 黏包/半包问题：
-//            在应用层实现
-//            1. 分隔符： 100+“@@@” +100
-//            2. 固定长度 ： 100 ，100 ,50+50
-//            3. 带长度： 2+100
-//          按照回车换行符分隔，每次一次应答
+            //回车符做了分割
             ch.pipeline().addLast(new LineBasedFrameDecoder(1024));
-
             ch.pipeline().addLast(new LineBaseClientHandler());
         }
     }

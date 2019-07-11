@@ -27,7 +27,7 @@ public class FixedLengthFrameDecoderTest {
             new FixedLengthFrameDecoder(3));
 
         //返回 false，因为没有一个完整的可供读取的帧
-        assertFalse(channel.writeInbound(input.readBytes(1)));
+        assertTrue(channel.writeInbound(input.readBytes(1)));
         //还是返回 false，因为没有一个完整的可供读取的帧
         assertFalse(channel.writeInbound(input.readBytes(1)));
         //返回 true，因为已经有了可供读取的帧

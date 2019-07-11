@@ -45,7 +45,8 @@ public class DelimiterEchoClient {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
-            ByteBuf delimiter = Unpooled.copiedBuffer(DelimiterEchoServer.DELIMITER_SYMBOL
+            ByteBuf delimiter
+                    = Unpooled.copiedBuffer(DelimiterEchoServer.DELIMITER_SYMBOL
                     .getBytes());
             ch.pipeline().addLast( new DelimiterBasedFrameDecoder(1024,
                     delimiter));
