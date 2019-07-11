@@ -3,4 +3,5 @@
  * 往期课程和VIP课程咨询 依娜老师  QQ：2133576719
  * 类说明：本包展示了如何使用Netty内置的序列化工具
  */
+// 使用内置的 protocal buf 序列化工具
 package cn.enjoyedu.nettybasic.serializable.protobuf;

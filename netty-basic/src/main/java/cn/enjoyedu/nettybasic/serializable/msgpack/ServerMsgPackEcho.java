@@ -7,6 +7,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 import java.net.InetSocketAddress;
 
@@ -47,7 +48,17 @@ public class ServerMsgPackEcho {
 
         @Override
         protected void initChannel(Channel ch) throws Exception {
-            //TODO
+            //服务端必须先解密
+//            p1: 当前解码器，报文最大长度
+//            p2: 长度字段在报文中的起始位置
+//            p3： 报文长度-占用字节数
+//            p4： 读取字节的调整值（要读取内容的实际长度值 - 长度字段值）
+//            p5： 前面忽略的字节数
+
+            ch.pipeline().addLast(
+                    "frameDecoder",
+                    new LengthFieldBasedFrameDecoder(65535,
+                            0,2,0,2));
             //将反序列化后的实体类交给业务处理
             ch.pipeline().addLast(new MsgPackServerHandler());
         }

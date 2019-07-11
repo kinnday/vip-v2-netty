@@ -6,4 +6,5 @@
  * 2、如何和第三方序列化工具，比如MessagePack进行集成
  * 3、如何实现自己的编解码框架
  */
+//Netty集成第三方序列化工具：MsgPack
 package cn.enjoyedu.nettybasic.serializable.msgpack;
