@@ -11,10 +11,7 @@ import java.nio.ByteBuffer;
  * 类说明：测试序列化性能差异
  */
 public class PerformTestUserInfo {
-//	JDK自动的序列化性能非常差
-//	The jdk serializable cost time is  : 4124 ms
-//-------------------------------------
-//	The byte array serializable cost time is : 232 ms
+
     public static void main(String[] args) throws IOException {
 	UserInfo info = new UserInfo();
 	info.buildUserID(100).buildUserName("Welcome to Netty");

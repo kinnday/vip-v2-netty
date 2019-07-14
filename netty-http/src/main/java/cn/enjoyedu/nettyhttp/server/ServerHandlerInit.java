@@ -3,15 +3,11 @@ package cn.enjoyedu.nettyhttp.server;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.http.HttpContentCompressor;
-import io.netty.handler.codec.http.HttpObjectAggregator;
-import io.netty.handler.codec.http.HttpRequestDecoder;
-import io.netty.handler.codec.http.HttpResponseDecoder;
+import io.netty.handler.codec.http.*;
 import io.netty.handler.ssl.SslContext;
 
 /**
  * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
- * 往期课程和VIP课程咨询 依娜老师  QQ：2133576719
  * 类说明：
  */
 public class ServerHandlerInit extends ChannelInitializer<SocketChannel> {
@@ -26,12 +22,15 @@ public class ServerHandlerInit extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline ph = ch.pipeline();
         //处理http服务的关键handler
-        //TODO
-        ph.addLast("encoder",new HttpResponseDecoder());
+        if(sslCtx != null){
+            ph.addLast(sslCtx.newHandler(ch.alloc()));
+        }
+        ph.addLast("encoder",new HttpResponseEncoder());
         ph.addLast("decoder",new HttpRequestDecoder());
-        ph.addLast("aggregator",new HttpObjectAggregator(10*1024*1024));
-
-        ph.addLast("compressor",new HttpContentCompressor()); // 内容压缩
+        //ph.addLast(new HttpServerCodec());
+        ph.addLast("aggregator",
+                new HttpObjectAggregator(10*1024*1024));
+        ph.addLast("compressor",new HttpContentCompressor());
         ph.addLast("handler", new BusiHandler());// 服务端业务逻辑
     }
 }

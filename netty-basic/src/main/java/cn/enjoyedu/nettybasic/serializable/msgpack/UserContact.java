@@ -6,8 +6,7 @@ import org.msgpack.annotation.Message;
  * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：实体类
  */
-//MessagePack提供的注解，表明这是一个需要序列化的实体类
-@Message
+@Message//MessagePack提供的注解，表明这是一个需要序列化的实体类
 public class UserContact {
     private String mail;
     private String phone;

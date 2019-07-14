@@ -33,4 +33,9 @@ public class EchoClientHandle extends SimpleChannelInboundHandler<ByteBuf> {
 
         ctx.close();
     }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        super.userEventTriggered(ctx, evt);
+    }
 }

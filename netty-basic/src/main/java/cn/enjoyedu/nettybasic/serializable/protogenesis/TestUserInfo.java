@@ -14,11 +14,6 @@ public class TestUserInfo {
      * @param args
      * @throws IOException
      */
-
-//	JDK自动的序列化性能非常差，查6倍
-//	The jdk serializable length is : 142
-//			-------------------------------------
-//	The byte array serializable length is : 24
     public static void main(String[] args) throws IOException {
 		UserInfo info = new UserInfo();
 		info.buildUserID(100).buildUserName("Welcome to Netty");
