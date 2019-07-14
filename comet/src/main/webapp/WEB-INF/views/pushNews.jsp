@@ -45,6 +45,7 @@
 
     longLoop();
 
+    // fxc-method2- 基于长连接的 长轮询， 回调函数里面重新发起请求
     function longLoop() {
         $.get("realTimeNews",function (data) {
             console.log(data);

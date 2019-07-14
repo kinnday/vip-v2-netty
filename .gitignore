@@ -23,6 +23,7 @@ out
 gen
 target
 *.idea
+*.idea/*
 *.gitignore
 *.iml
 */target

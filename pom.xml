@@ -10,6 +10,12 @@
     <modules>
         <module>netty-basic</module>
         <module>netty-http</module>
+        <module>comet</module>
+        <module>netty-adv</module>
+        <module>netty-ws</module>
+        <module>stomp</module>
+        <module>udp</module>
+        <module>ws</module>
     </modules>
     <packaging>pom</packaging>
     <build>

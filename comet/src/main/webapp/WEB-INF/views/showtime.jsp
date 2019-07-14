@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
     //showTime();
-
+    // fxc-method1- 短连接，ajax 定时请求服务器
     function showTime(){
         $.get("showTime",function (data) {
             console.log(data);

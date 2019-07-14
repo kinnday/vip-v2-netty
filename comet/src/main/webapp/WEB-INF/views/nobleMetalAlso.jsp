@@ -100,6 +100,7 @@
 
     if(!!window.EventSource){
         $("#hint").html("");
+        // fxc-method3- SSE-正确的方式！！！ 流推送
         var source = new EventSource('needPricer');
         source.onmessage=function (e) {
                 show(e);

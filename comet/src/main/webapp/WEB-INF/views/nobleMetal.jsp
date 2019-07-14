@@ -34,6 +34,7 @@
     }
 
     if(!!window.EventSource){
+        // fxc-method3-SSE-方式，实现服务器推送，与短连接非常类似！！
         var source = new EventSource('needPrice');
         source.onmessage=function (e) {
             var dataObj=e.data;

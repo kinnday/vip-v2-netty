@@ -23,10 +23,12 @@ public class NobleMetalController {
     private static Logger logger = LoggerFactory.getLogger(NobleMetalController.class);
 
     @RequestMapping("/nobleMetal")
+//  fxc-SSE会自动发起重连， return 后就把请求交给了tomcat，自动关闭了连接
     public String stock(){
         return "nobleMetal";
     }
 
+//    fxc-produces="text/event-stream 这里很重要， 告诉浏览器推送的是事件流，不能关闭连接
     @RequestMapping(value="/needPrice"
             ,produces="text/event-stream;charset=UTF-8"
             )
@@ -45,6 +47,7 @@ public class NobleMetalController {
     /*业务方法，生成贵金属的实时价格*/
     private String makeResp(Random r){
         StringBuilder stringBuilder = new StringBuilder("");
+//       fxc- \n 代表一个数据项； \n\n 代表数据完了。
         stringBuilder.append("retry:2000\n")
                 .append("data:")
                 .append(r.nextInt(100)+50+",")
@@ -61,6 +64,7 @@ public class NobleMetalController {
 
 
     /*------------以下为正确使用SSE的姿势------------------*/
+//    fxc-使用流 flush的方式 写数据到浏览器！
     @RequestMapping("/nobleMetalr")
     public String stockr(){
         return "nobleMetalAlso";
