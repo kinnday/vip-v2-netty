@@ -17,9 +17,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：心跳请求处理
  */
-public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter {
+public class HeartBeatReqHandlerFxc extends ChannelInboundHandlerAdapter {
 
-    private static final Log LOG = LogFactory.getLog(HeartBeatReqHandler.class);
+    private static final Log LOG = LogFactory.getLog(HeartBeatReqHandlerFxc.class);
 
     private volatile ScheduledFuture<?> heartBeat;
 
@@ -32,7 +32,7 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter {
                 .value()) {
 //          fxc-启用ctx自带的定时任务机制
             heartBeat = ctx.executor().scheduleAtFixedRate(
-                    new HeartBeatReqHandler.HeartBeatTask(ctx), 0,
+                    new HeartBeatReqHandlerFxc.HeartBeatTask(ctx), 0,
                     5000,
                     TimeUnit.MILLISECONDS);
 //          心跳报文为最后一个handler， 释放掉报文
@@ -41,7 +41,7 @@ public class HeartBeatReqHandler extends ChannelInboundHandlerAdapter {
         } else if (message.getMyHeader() != null
                 && message.getMyHeader().getType() == MessageType.HEARTBEAT_RESP
                 .value()) {
-            LOG.info("Client receive server heart beat message : ---> ");
+//            LOG.info("Client receive server heart beat message : ---> ");
             ReferenceCountUtil.release(msg);
         //如果是其他报文，传播给后面的Handler
         } else

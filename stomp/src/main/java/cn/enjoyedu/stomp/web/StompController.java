@@ -26,6 +26,7 @@ public class StompController {
     public ChatRoomResponse mass(ChatRoomRequest chatRoomRequest){
         System.out.println("name = " + chatRoomRequest.getName());
         System.out.println("chatValue = " + chatRoomRequest.getChatValue());
+//      fxc-将消息推送给订阅了该topic的接受者
         ChatRoomResponse response=new ChatRoomResponse();
         response.setName(chatRoomRequest.getName());
         response.setChatValue(chatRoomRequest.getChatValue());

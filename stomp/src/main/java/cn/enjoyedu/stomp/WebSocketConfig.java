@@ -18,7 +18,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        /*注册STOMP协议的节点(endpoint),并映射指定的url,
+        /*fxc1: end-point -域名
+        注册STOMP协议的节点(endpoint),并映射指定的url,
         * 添加一个访问端点“/endpointMark”,客户端打开双通道时需要的url,
         * 允许所有的域名跨域访问，指定使用SockJS协议。*/
         registry.addEndpoint("/endpointMark")
@@ -29,6 +30,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         /*配置一个消息代理*/
+//        fxc1: 内存消息队列
         registry.enableSimpleBroker(
                 "/mass","/queue");
         registry.setUserDestinationPrefix("/queue");

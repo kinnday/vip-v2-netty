@@ -208,6 +208,7 @@
         }
         //指定要连接的服务器地址与端口建立连接
         //ws对应http、wss对应https。
+//  fxc-五个方法， 打开连接、关闭、收到消息、错误； 发送消息
         socket = new WebSocket("ws://localhost:8080/ws/asset?toUserId="+toUserId);
         //连接打开事件
         socket.onopen = function() {

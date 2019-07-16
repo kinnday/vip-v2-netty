@@ -22,6 +22,7 @@ public class HeartBeatRespHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg)
 	    throws Exception {
 		MyMessage message = (MyMessage) msg;
+//		fxc-多种消息时，需要判断是否为本handler需要处理的类型，如果不是，则 fireChannelRead.
 		// 返回心跳应答消息
 		if (message.getMyHeader() != null
 			&& message.getMyHeader().getType() == MessageType.HEARTBEAT_REQ

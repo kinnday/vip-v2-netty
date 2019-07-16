@@ -12,9 +12,9 @@ import org.apache.commons.logging.LogFactory;
  * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：发起登录请求
  */
-public class LoginAuthReqHandler extends ChannelInboundHandlerAdapter {
+public class LoginAuthReqHandlerFxc extends ChannelInboundHandlerAdapter {
 
-    private static final Log LOG = LogFactory.getLog(LoginAuthReqHandler.class);
+    private static final Log LOG = LogFactory.getLog(LoginAuthReqHandlerFxc.class);
 
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
 //       fxc-入栈请求，封装为 message-request

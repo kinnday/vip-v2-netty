@@ -13,7 +13,9 @@ window.onunload = function() {
 
 //打开通道
 function connect(){
+    //fxc-step1-建立连接
     var socket = new SockJS('/endpointMark'); //连接SockJS的endpoint名称为"endpointAric"
+    // fxc-step1-获取stomp客户端
     stompClient = Stomp.over(socket);//使用STMOP子协议的WebSocket客户端
     stompClient.connect({},function(frame){//连接WebSocket服务端
 

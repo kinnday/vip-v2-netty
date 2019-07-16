@@ -31,6 +31,8 @@ public class PushNewsController {
     @RequestMapping(value="/realTimeNews")
     @ResponseBody
     /*在WebInitializer中要加上servlet.setAsyncSupported(true);*/
+//    fxc-metho2-基于 HTTP长连接、无须在浏览器端安装插件的“服务器推”技术为“Comet”
+
     public DeferredResult<String> realtimeNews(HttpServletRequest request){
         final DeferredResult<String> dr = new DeferredResult<String>();
 

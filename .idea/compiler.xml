@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -16,5 +17,30 @@
         <module name="ws" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="comet" target="8" />
+      <module name="netty-adv" target="8" />
+      <module name="netty-basic" target="8" />
+      <module name="netty-http" target="8" />
+      <module name="netty-ws" target="8" />
+      <module name="stomp" target="1.8" />
+      <module name="udp" target="8" />
+      <module name="vip-v2-netty" target="8" />
+      <module name="ws" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf-8" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="comet" options="" />
+      <module name="netty-adv" options="" />
+      <module name="netty-basic" options="" />
+      <module name="netty-http" options="" />
+      <module name="netty-ws" options="" />
+      <module name="stomp" options="" />
+      <module name="udp" options="" />
+      <module name="vip-v2-netty" options="" />
+      <module name="ws" options="" />
+    </option>
   </component>
 </project>

@@ -13,7 +13,7 @@ import io.netty.handler.timeout.ReadTimeoutHandler;
  * 类说明：客户端Handler的初始化
  * fxc-包含6个具体的handler实现，其中两个是自定义的
  */
-public class ClientInit extends ChannelInitializer<SocketChannel> {
+public class ClientInitFxc extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         /*剥离接收到的消息的长度字段，拿到实际的消息报文的字节数组*/

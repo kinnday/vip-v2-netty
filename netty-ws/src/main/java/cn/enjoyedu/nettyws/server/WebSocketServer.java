@@ -15,6 +15,7 @@ import io.netty.util.concurrent.ImmediateEventExecutor;
 /**
  * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：
+ * fxc-基于Netty实现-聊天-群发功能！！！
  */
 public final class WebSocketServer {
 

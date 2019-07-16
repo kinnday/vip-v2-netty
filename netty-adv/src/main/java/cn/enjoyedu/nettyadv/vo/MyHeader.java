@@ -7,6 +7,7 @@ import java.util.Map;
  * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：消息头
  */
+//fxc-自定义消息头
 public final class MyHeader {
 
     private int crcCode = 0xabef0101;

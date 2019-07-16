@@ -24,7 +24,7 @@ public class LoginAuthRespHandler extends ChannelInboundHandlerAdapter {
 
 	//用以检查用户是否重复登录的缓存
     private Map<String, Boolean> nodeCheck = new ConcurrentHashMap<String, Boolean>();
-    //用户登录的白名单
+    //用户登录的白名单-简单化处理
     private String[] whitekList = { "127.0.0.1"};
 
     public void channelRead(ChannelHandlerContext ctx, Object msg)

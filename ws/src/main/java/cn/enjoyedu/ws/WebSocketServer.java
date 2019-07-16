@@ -21,10 +21,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class WebSocketServer {
 
+//  五个方法， 打开连接、关闭、收到消息、错误； 发送消息
     private static Logger log = LoggerFactory.getLogger(WebSocketServer.class);
     private static final AtomicInteger onlineCount
             = new AtomicInteger(0);
     /*线程安全Set，用来存放每个客户端对应的Session对象。*/
+//    写时复制 容器
     private static CopyOnWriteArraySet<Session> sessionSet
             = new CopyOnWriteArraySet<Session>();
     /*线程安全Map，用来存放每个客户端sessionid和用户名的对应关系。*/

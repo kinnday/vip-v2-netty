@@ -4,6 +4,7 @@ package cn.enjoyedu.nettyadv.vo;
  * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * 类说明：消息实体类
  */
+//fxc-自定义消息体{ header + body-obj}
 public final class MyMessage {
 
     private MyHeader myHeader;
